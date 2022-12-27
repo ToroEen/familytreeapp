@@ -7,7 +7,7 @@
 }
 
 body {
-    margin: 10% 0;
+    margin: 10%;
     background: var(--clr);
     color: var(--text-clr);
     font-family: 'Montserrat';
@@ -74,7 +74,12 @@ i.fas.fa-paw:hover {
 
 /* Generations */
 .generation {
+    display: block;
+}
+.parent {
+    display: inline-block;
     text-align: center;
+    vertical-align: top;
 }
 
 /* Relations */

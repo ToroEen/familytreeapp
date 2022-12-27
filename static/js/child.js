@@ -1,45 +1,37 @@
 function createChild(obj) {
-    // Get the parent
-    parent_obj = obj.parentElement.parentElement
+    // Clone a user object
+    let new_user = user_object.cloneNode(true)
 
-    // Create user clone
-    new_user = user_object.cloneNode(true)
-    new_user.id = id + 1
+    // Set the IDs
+    new_user.id = "parent_" + (parent_id + 1)
+    new_user.children[0].id = "user_" + (user_id + 1)
 
-    id += 1
+    parent_id += 1
+    user_id += 1
 
-    // Set parent ID to the user
-    new_user.setAttribute('data-parent', parent_obj.id)
+    // Update the data for parent and child
+    obj.setAttribute('data-children', obj.getAttribute('data-children') + new_user.id + ",")
 
-    // Append the new child to the children list of the parent
-    parent_obj.setAttribute('data-children', parent_obj.getAttribute('data-children') + id + ",")
+    new_user.setAttribute('data-parent', obj.parentElement.id)
 
-    children = parent_obj.getAttribute('data-children').split(",")
+    // Get parent children object
+    children = obj.getAttribute('data-children').split(",")
     children.pop()
 
-    // Get the generation ID of the parent
-    generation = parseInt(parent_obj.parentElement.id.split("_")[1])
-
-    // Get the generation underneath the parent
-    let generation_obj = document.getElementById("generation_" + (parseInt(parent_obj.parentElement.id.split("_")[1]) + 1).toString())
-
-    // Create a new generation if it doesnt exist
-    if (generation_obj == 'undefined' || generation_obj == null) {
+    if (children.length > 1) {
+        obj.parentElement.children[1].appendChild(new_user)
+    } else {
         let new_generation = document.createElement("div")
 
         new_generation.classList.add("generation")
-        new_generation.id = "generation_" + (parseInt(parent_obj.parentElement.id.split("_")[1]) + 1).toString()
+        new_generation.id = "generation_" + (parseInt(obj.parentElement.id.split("_")[1]) + 1).toString()
 
         generation_id += 1
 
-        parent_obj.parentElement.appendChild(new_generation)
+        obj.parentElement.appendChild(new_generation)
 
-        generation_obj = new_generation
+        console.log(new_generation)
+
+        new_generation.appendChild(new_user)
     }
-
-    // Add the child object to the earlier defined generation
-    generation_obj.appendChild(new_user)
-
-    // Call the arrange children function which cleans up the visual-relation between child and parent 
-    arrangeChildren(children)
 }

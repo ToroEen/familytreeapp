@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +8,7 @@
 
     <title>Tree app</title>
 
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/styles.css') }}">
 
     <!-- Custom scripts-->
     <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
@@ -22,33 +23,39 @@
     <script src="https://code.iconify.design/1/1.0.4/iconify.min.js"></script>
     <script src="https://kit.fontawesome.com/697d2afc76.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
     <div class="samples">
-        <div class="user-object" id="0" data-children="">
-            <div class="empty"></div>
-            <div class="top-bottom"><a onclick="createParent()"><i class="fas fa-user"></i></a></div>
-            <div class="empty"></div>
-            <div class="left-right"><a onclick="createPartner(this, false)"><i class="fas fa-heart"></i></a> <a onclick="createSibling(this, false)"><i class="fas fa-user sibling"></i></a></div>
-            <div class="name"><input type="text" value="Click to name" onchange="checkInput(this)"></div>
-            <div class="left-right"><a onclick="createSibling(this, true)"><i class="fas fa-user sibling"></i></a> <a onclick="createPartner(this, true)"><i class="fas fa-heart"></i></a></div>
-            <div class="empty"></div>
-            <div class="top-bottom"><a onclick="createChild(this)"><i class="fas fa-user"></i></a> <a onclick="createPet()"><i class="fas fa-paw"></i></a></div>
-            <div class="empty"></div>
+        <div class="parent" id="parent_0">
+            <div class="user-object" id="user_0" data-children="">
+                <div class="empty"></div>
+                <div class="top-bottom"><a onclick="createParent()"><i class="fas fa-user"></i></a></div>
+                <div class="empty"></div>
+                <div class="left-right"><a onclick="createPartner(this.parentElement.parentElement, false)"><i class="fas fa-heart"></i></a> <a onclick="createSibling(this.parentElement.parentElement, false)"><i class="fas fa-user sibling"></i></a></div>
+                <div class="name"><input type="text" value="Click to name" onchange="checkInput(this)"></div>
+                <div class="left-right"><a onclick="createSibling(this.parentElement.parentElement, true)"><i class="fas fa-user sibling"></i></a> <a onclick="createPartner(this.parentElement.parentElement, true)"><i class="fas fa-heart"></i></a></div>
+                <div class="empty"></div>
+                <div class="top-bottom"><a onclick="createChild(this.parentElement.parentElement)"><i class="fas fa-user"></i></a> <a onclick="createPet()"><i class="fas fa-paw"></i></a></div>
+                <div class="empty"></div>
+            </div>
         </div>
     </div>
 
-    <div class="generation" id="generation_0">
-        <div class="user-object" id="1" data-children="">
-            <div class="empty"></div>
-            <div class="top-bottom"><a onclick="createParent()"><i class="fas fa-user"></i></a></div>
-            <div class="empty"></div>
-            <div class="left-right"><a onclick="createPartner(this, false)"><i class="fas fa-heart"></i></a> <a onclick="createSibling(this, false)"><i class="fas fa-user sibling"></i></a></div>
-            <div class="name"><input type="text" value="Click to name" onchange="checkInput(this)"></div>
-            <div class="left-right"><a onclick="createSibling(this, true)"><i class="fas fa-user sibling"></i></a> <a onclick="createPartner(this, true)"><i class="fas fa-heart"></i></a></div>
-            <div class="empty"></div>
-            <div class="top-bottom"><a onclick="createChild(this)"><i class="fas fa-user"></i></a> <a onclick="createPet()"><i class="fas fa-paw"></i></a></div>
-            <div class="empty"></div>
+    <div class="generation" id="generation_1">
+        <div class="parent" id="parent_1">
+            <div class="user-object" id="user_1" data-children="">
+                <div class="empty"></div>
+                <div class="top-bottom"><a onclick="createParent()"><i class="fas fa-user"></i></a></div>
+                <div class="empty"></div>
+                <div class="left-right"><a onclick="createPartner(this.parentElement.parentElement, false)"><i class="fas fa-heart"></i></a> <a onclick="createSibling(this.parentElement.parentElement, false)"><i class="fas fa-user sibling"></i></a></div>
+                <div class="name"><input type="text" value="Click to name" onchange="checkInput(this)"></div>
+                <div class="left-right"><a onclick="createSibling(this.parentElement.parentElement, true)"><i class="fas fa-user sibling"></i></a> <a onclick="createPartner(this.parentElement.parentElement, true)"><i class="fas fa-heart"></i></a></div>
+                <div class="empty"></div>
+                <div class="top-bottom"><a onclick="createChild(this.parentElement.parentElement)"><i class="fas fa-user"></i></a> <a onclick="createPet()"><i class="fas fa-paw"></i></a></div>
+                <div class="empty"></div>
+            </div>
         </div>
     </div>
 </body>
+
 </html>
