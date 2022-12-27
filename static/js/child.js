@@ -30,8 +30,6 @@ function createChild(obj) {
 
         obj.parentElement.appendChild(new_generation)
 
-        console.log(new_generation)
-
         new_generation.appendChild(new_user)
     }
 }

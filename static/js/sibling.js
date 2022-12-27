@@ -1,43 +1,27 @@
-function createSibling(obj, rightSide) {
-    // Get the sibling on which the functions was called
-    let sibling = obj.parentElement.parentElement
-
-    // Get the parent
-    let parent_obj = document.getElementById(sibling.getAttribute('data-parent'))
-
-    // Get the generation on which the sibling was created
-    const generation = document.getElementById("generation_" + (parent_obj.parentElement.id.split("_")[1] + 1))
+function createSibling(obj, right_side) {
+    // Parent 
+    let parent_obj = document.getElementById(obj.parentElement.getAttribute("data-parent"));
     
-    // Create a user clone
-    new_user = user_object.cloneNode(true)
-    new_user.id = id + 1
+    // Clone a user object
+    let new_user = user_object.cloneNode(true)
 
-    id += 1
+    // Set the IDs
+    new_user.id = "parent_" + (parent_id + 1)
+    new_user.children[0].id = "user_" + (user_id + 1)
 
-    new_user.setAttribute('data-parent', sibling.getAttribute('data-parent'))
+    parent_id += 1
+    user_id += 1
 
-    // Add use robject before or after the sibling
-    if (rightSide) {
-        // Add the child to the parrent
-        parent_obj.setAttribute('data-children', parent_obj.getAttribute('data-children') + id + ",")
+    // Update the data for parent and child
+    parent_obj.querySelector(".user-object").setAttribute('data-children', parent_obj.querySelector(".user-object").getAttribute('data-children') + new_user.id + ",")
 
-        // Check if the last element of this generation is another generation
-        if (generation.lastChild.classList.contains("generation")) {
-            generation.insertBefore(new_user, generation.lastChild)
-        } else {
-            generation.appendChild(new_user)
-        }
-        
+    new_user.setAttribute('data-parent', parent_obj.querySelector(".user-object").parentElement.id)
+
+    generation = parent_obj.querySelector(".generation")
+
+    if (right_side) {
+        generation.appendChild(new_user)
     } else {
-        // Add the child to the parrent
-        parent_obj.setAttribute('data-children', id + "," + parent_obj.getAttribute('data-children'))
-
-        generation.insertBefore(new_user, sibling)
+        generation.insertBefore(new_user, obj.parentElement)
     }
-
-    // Arrange the children
-    children = parent_obj.getAttribute('data-children').split(",")
-    children.pop()
-
-    arrangeChildren(children)
 }
