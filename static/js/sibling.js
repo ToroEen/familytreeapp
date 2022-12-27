@@ -13,18 +13,22 @@ function createSibling(obj, rightSide) {
 
     new_user.setAttribute('data-parent', sibling.getAttribute('data-parent'))
 
-    // Add use robject before or after the sibling
-    if (rightSide) {
-        row.appendChild(new_user)
-    } else {
-        row.insertBefore(new_user, sibling)
-    }
-
     // Get the parent
     let parent_obj = document.getElementById(sibling.getAttribute('data-parent'))
 
-    // Add the child to the parrent
-    parent_obj.setAttribute('data-children', parent_obj.getAttribute('data-children') + id + ",")
+
+    // Add use robject before or after the sibling
+    if (rightSide) {
+        // Add the child to the parrent
+        parent_obj.setAttribute('data-children', parent_obj.getAttribute('data-children') + id + ",")
+
+        row.appendChild(new_user)
+    } else {
+        // Add the child to the parrent
+        parent_obj.setAttribute('data-children', id + "," + parent_obj.getAttribute('data-children'))
+
+        row.insertBefore(new_user, sibling)
+    }
 
     // Arrange the children
     children = parent_obj.getAttribute('data-children').split(",")
