@@ -71,8 +71,9 @@ i.fas.fa-paw:hover {
     padding: var(--height) 0px;
     height: calc(var(--max-height) - var(--height) * 2);
 }
-.row {
-    width: 100%;
+
+/* Generations */
+.generation {
     text-align: center;
 }
 

@@ -5,8 +5,8 @@ function createSibling(obj, rightSide) {
     // Get the parent
     let parent_obj = document.getElementById(sibling.getAttribute('data-parent'))
 
-    // Get the row on which the sibling was created
-    const row = document.getElementById("row_" + parent_obj.id)
+    // Get the generation on which the sibling was created
+    const generation = document.getElementById("generation_" + (parent_obj.parentElement.id.split("_")[1] + 1))
     
     // Create a user clone
     new_user = user_object.cloneNode(true)
@@ -21,17 +21,18 @@ function createSibling(obj, rightSide) {
         // Add the child to the parrent
         parent_obj.setAttribute('data-children', parent_obj.getAttribute('data-children') + id + ",")
 
-        if (row.lastChild.classList.contains("row")) {
-            row.insertBefore(new_user, row.lastChild)
+        // Check if the last element of this generation is another generation
+        if (generation.lastChild.classList.contains("generation")) {
+            generation.insertBefore(new_user, generation.lastChild)
         } else {
-            row.appendChild(new_user)
+            generation.appendChild(new_user)
         }
         
     } else {
         // Add the child to the parrent
         parent_obj.setAttribute('data-children', id + "," + parent_obj.getAttribute('data-children'))
 
-        row.insertBefore(new_user, sibling)
+        generation.insertBefore(new_user, sibling)
     }
 
     // Arrange the children

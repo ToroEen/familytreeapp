@@ -17,28 +17,28 @@ function createChild(obj) {
     children = parent_obj.getAttribute('data-children').split(",")
     children.pop()
 
-    // Get the row ID of the parent
-    row = parseInt(parent_obj.parentElement.id.split("_")[1])
+    // Get the generation ID of the parent
+    generation = parseInt(parent_obj.parentElement.id.split("_")[1])
 
-    // Get the row underneath the parent
-    let row_obj = document.getElementById("row_" + (parent_obj.id).toString())
+    // Get the generation underneath the parent
+    let generation_obj = document.getElementById("generation_" + (parseInt(parent_obj.parentElement.id.split("_")[1]) + 1).toString())
 
-    // Create a new row if it doesnt exist
-    if (row_obj == 'undefined' || row_obj == null) {
-        let new_row = document.createElement("div")
+    // Create a new generation if it doesnt exist
+    if (generation_obj == 'undefined' || generation_obj == null) {
+        let new_generation = document.createElement("div")
 
-        new_row.classList.add("row")
-        new_row.id = "row_" + (parent_obj.id).toString()
+        new_generation.classList.add("generation")
+        new_generation.id = "generation_" + (parseInt(parent_obj.parentElement.id.split("_")[1]) + 1).toString()
 
-        row_id += 1
+        generation_id += 1
 
-        parent_obj.parentElement.appendChild(new_row)
+        parent_obj.parentElement.appendChild(new_generation)
 
-        row_obj = new_row
+        generation_obj = new_generation
     }
 
-    // Add the child object to the earlier defined row
-    row_obj.appendChild(new_user)
+    // Add the child object to the earlier defined generation
+    generation_obj.appendChild(new_user)
 
     // Call the arrange children function which cleans up the visual-relation between child and parent 
     arrangeChildren(children)
