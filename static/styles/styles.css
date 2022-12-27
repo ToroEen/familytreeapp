@@ -115,12 +115,14 @@ i.fas.fa-paw:hover {
 }
 
 .parent-relation-right,
-.parent-relation-left {
-    display: flex;
+.parent-relation-left,
+.parent-relation-horizontal-left,
+.parent-relation-horizontal-right {
     align-items: center;
+    height: 64px;
 }
 .parent-relation-right div {
-    width: 40%;
+    width: 50%;
     border-top: 5px solid var(--clr-acc);
     border-right: 5px solid var(--clr-acc);
     border-radius: 0px 10px 0px 0px;
@@ -133,7 +135,7 @@ i.fas.fa-paw:hover {
 }
 .parent-relation-left div {
     margin-left: 50%;
-    width: 40%;
+    width: 50%;
     border-top: 5px solid var(--clr-acc);
     border-left: 5px solid var(--clr-acc);
     border-radius: 10px 0px 0px 0px;
@@ -143,4 +145,20 @@ i.fas.fa-paw:hover {
 .parent-relation-left div:hover {
     border-top: 5px solid #6798ff;
     border-left: 5px solid #6798ff;
+}
+
+.parent-relation-horizontal-right div {
+    margin-left: 50%;
+}
+
+.parent-relation-horizontal-left div,
+.parent-relation-horizontal-right div {
+    width: 50%;
+    border-top: 5px solid var(--clr-acc);
+    transition: 0.2s all linear;
+    height: 32px;
+}
+.parent-relation-horizontal-left div:hover, 
+.parent-relation-horizontal-right div:hover {
+    border-top: 5px solid #6798ff;
 }

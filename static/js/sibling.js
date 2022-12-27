@@ -25,8 +25,6 @@ function createSibling(obj, rightSide) {
     let relations = new_user.querySelectorAll(".top-bottom")[0]
 
     if (rightSide) {
-        new_user.querySelectorAll(".left-right")[0].innerHTML = '<a onclick="createPartner(this, true)"><i class="fas fa-heart"></i></a>'
-
         relations.classList.add("parent-relation-right")
         relations.classList.remove("top-bottom")
         relations.innerHTML = '<div></div>'
@@ -40,8 +38,6 @@ function createSibling(obj, rightSide) {
             relations.classList.add("parent-relation-left")
         }
     } else {
-        new_user.querySelectorAll(".left-right")[1].innerHTML = '<a onclick="createPartner(this, false)"><i class="fas fa-heart"></i></a>'
-
         relations.classList.add("parent-relation-left")
         relations.classList.remove("top-bottom")
         relations.innerHTML = '<div></div>'
@@ -55,10 +51,6 @@ function createSibling(obj, rightSide) {
             relations.classList.add("parent-relation-right")
         }
     }
-
-    obj.parentElement.classList.remove("left-right")
-    obj.parentElement.classList.add("empty")
-    obj.parentElement.innerHTML = ''
 
     // Arrange the children
     arrangeChildren(children)

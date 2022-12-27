@@ -33,15 +33,38 @@ function arrangeChildren(children_array) {
                 parent_relation.classList.add("parent-relation-left")
                 parent_relation.innerHTML = '<div></div>'
             }
+
+            extra_relation = document.getElementById(children_array[i]).children[2]
+
+            if (extra_relation.classList.contains("empty")) {
+                extra_relation.classList.remove("empty")
+                extra_relation.classList.add("parent-relation-horizontal-left")
+                extra_relation.innerHTML = '<div></div>'
+            }
         } else if (i === half && odd) {
             parent_relation.classList.add("parent-relation-vertical")
             parent_relation.classList.remove("parent-relation-right")
             parent_relation.innerHTML = '<span></span>'
+
+            extra_relation = document.getElementById(children_array[i]).children[0]
+
+            if (extra_relation.classList.contains("parent-relation-horizontal-right")) {
+                extra_relation.classList.remove("parent-relation-horizontal-right")
+                extra_relation.classList.add("empty")
+            }
         } else {
             if (parent_relation.classList.contains("parent-relation-vertical")) {
                 parent_relation.classList.remove("parent-relation-vertical")
                 parent_relation.classList.add("parent-relation-right")
                 parent_relation.innerHTML = '<div></div>'
+            }
+
+            extra_relation = document.getElementById(children_array[i]).children[0]
+
+            if (extra_relation.classList.contains("empty")) {
+                extra_relation.classList.remove("empty")
+                extra_relation.classList.add("parent-relation-horizontal-right")
+                extra_relation.innerHTML = '<div></div>'
             }
         }
     }
