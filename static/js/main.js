@@ -25,11 +25,20 @@ function arrangeChildren(children_array) {
         parent_relation = document.getElementById(children_array[i]).children[1]
 
         if (i < half) {
+            console.log("smoller")
+            console.log(parent_relation)
+            console.log(parent_relation.classList)
             if (parent_relation.classList.contains("parent-relation-right")) {
                 parent_relation.classList.remove("parent-relation-right")
                 parent_relation.classList.add("parent-relation-left")
-            } else if (parent_relation.classList.contains("parent-relation-vertical")) {
+            } 
+            if (parent_relation.classList.contains("parent-relation-vertical")) {
                 parent_relation.classList.remove("parent-relation-vertical")
+                parent_relation.classList.add("parent-relation-left")
+                parent_relation.innerHTML = '<div></div>'
+            }
+            if (parent_relation.classList.contains("top-bottom")) {
+                parent_relation.classList.remove("top-bottom")
                 parent_relation.classList.add("parent-relation-left")
                 parent_relation.innerHTML = '<div></div>'
             }
@@ -42,6 +51,9 @@ function arrangeChildren(children_array) {
                 extra_relation.innerHTML = '<div></div>'
             }
         } else if (i === half && odd) {
+            console.log("equal")
+            console.log(parent_relation)
+            console.log(parent_relation.classList)
             parent_relation.classList.add("parent-relation-vertical")
             parent_relation.classList.remove("parent-relation-right")
             parent_relation.innerHTML = '<span></span>'
@@ -53,8 +65,16 @@ function arrangeChildren(children_array) {
                 extra_relation.classList.add("empty")
             }
         } else {
+            console.log("greaters")
+            console.log(parent_relation)
+            console.log(parent_relation.classList)
             if (parent_relation.classList.contains("parent-relation-vertical")) {
                 parent_relation.classList.remove("parent-relation-vertical")
+                parent_relation.classList.add("parent-relation-right")
+                parent_relation.innerHTML = '<div></div>'
+            } 
+            if (parent_relation.classList.contains("top-bottom")) {
+                parent_relation.classList.remove("top-bottom")
                 parent_relation.classList.add("parent-relation-right")
                 parent_relation.innerHTML = '<div></div>'
             }
