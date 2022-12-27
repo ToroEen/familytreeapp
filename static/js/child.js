@@ -21,18 +21,18 @@ function createChild(obj) {
     row = parseInt(parent_obj.parentElement.id.split("_")[1])
 
     // Get the row underneath the parent
-    let row_obj = document.getElementById("row_" + (row + 1).toString())
+    let row_obj = document.getElementById("row_" + (parent_obj.id).toString())
 
     // Create a new row if it doesnt exist
     if (row_obj == 'undefined' || row_obj == null) {
         let new_row = document.createElement("div")
 
         new_row.classList.add("row")
-        new_row.id = "row_" + (row_id + 1).toString()
+        new_row.id = "row_" + (parent_obj.id).toString()
 
         row_id += 1
 
-        body.appendChild(new_row)
+        parent_obj.parentElement.appendChild(new_row)
 
         row_obj = new_row
     }

@@ -25,6 +25,8 @@ function arrangeChildren(children_array) {
         parent_relation = document.getElementById(children_array[i]).children[1]
 
         if (i < half) {
+            // Make the first half point towards the parent ( ↱ )
+
             if (parent_relation.classList.contains("parent-relation-right")) {
                 parent_relation.classList.remove("parent-relation-right")
                 parent_relation.classList.add("parent-relation-left")
@@ -40,6 +42,7 @@ function arrangeChildren(children_array) {
                 parent_relation.innerHTML = '<div></div>'
             }
 
+            // Add a extra line ( → )
             extra_relation = document.getElementById(children_array[i]).children[2]
 
             if (extra_relation.classList.contains("empty")) {
@@ -48,6 +51,8 @@ function arrangeChildren(children_array) {
                 extra_relation.innerHTML = '<div></div>'
             }
         } else if (i === half && odd) {
+            // If the amount of children is odd, make the middle one point directly to parent ( ↑ ) 
+
             parent_relation.classList.add("parent-relation-vertical")
             parent_relation.classList.remove("parent-relation-right")
             parent_relation.innerHTML = '<span></span>'
@@ -66,6 +71,7 @@ function arrangeChildren(children_array) {
                 extra_relation.classList.add("empty")
             }
         } else {
+            // Make the second half of children point towards the parent ( ↰ ) 
             if (parent_relation.classList.contains("parent-relation-vertical")) {
                 parent_relation.classList.remove("parent-relation-vertical")
                 parent_relation.classList.add("parent-relation-right")
@@ -80,6 +86,7 @@ function arrangeChildren(children_array) {
                 parent_relation.classList.remove("parent-relation-left")
             }
 
+            // Add a extra line ( ← )
             extra_relation = document.getElementById(children_array[i]).children[0]
 
             if (extra_relation.classList.contains("empty")) {
