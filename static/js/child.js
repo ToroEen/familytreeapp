@@ -9,12 +9,15 @@ function createChild(obj) {
     parent_id += 1
     user_id += 1
 
+    // Set new user visual relation
+    bottomToTop(new_user)
+
     // Update the data for parent and child
     obj.setAttribute('data-children', obj.getAttribute('data-children') + new_user.id + ",")
 
     new_user.setAttribute('data-parent', obj.parentElement.id)
 
-    // Get parent children object
+    // Get all the children of parent
     children = obj.getAttribute('data-children').split(",")
     children.pop()
 
@@ -32,4 +35,7 @@ function createChild(obj) {
 
         new_generation.appendChild(new_user)
     }
+
+    // Arrange the children
+    arrangeChildren(children)
 }

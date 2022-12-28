@@ -15,6 +15,7 @@
     <script src="{{ url_for('static', filename='js/child.js') }}" defer></script>
     <script src="{{ url_for('static', filename='js/partner.js') }}" defer></script>
     <script src="{{ url_for('static', filename='js/sibling.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/visual_relations.js') }}" defer></script>
 
     <!-- None custom CSS files -->
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
@@ -22,6 +23,8 @@
     <!-- None custom scripts -->
     <script src="https://code.iconify.design/1/1.0.4/iconify.min.js"></script>
     <script src="https://kit.fontawesome.com/697d2afc76.js" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@grabzit/js@3.5.2/grabzit.min.js"></script>
 </head>
 
 <body>
@@ -56,6 +59,11 @@
             </div>
         </div>
     </div>
-</body>
 
+    <div class="toolbar">
+        <div class="tool">
+            <a onclick="captureTree()"><i class="fas fa-camera"></i></a>     
+        </div>
+    </div>
+</body>
 </html>
