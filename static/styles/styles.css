@@ -12,9 +12,32 @@ body {
     font-family: 'Montserrat';
     font-size: var(--height);
     white-space: nowrap;
-    width: fit-content;
-    padding: 10%;
+    height: 100vh;
+    overflow: hidden;
 }
+
+.container {
+    padding: 10%;
+    height: 80%;
+    overflow: auto;
+}
+
+::-webkit-scrollbar {
+    background: transparent;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: transparent;
+}
+
 
 /* Toolbar */
 .toolbar {
@@ -41,7 +64,6 @@ body {
     transform: scale(1.2);
 }
 
-
 i {
     color: var(--clr-acc);
     transition: 0.2s all linear;
@@ -62,6 +84,7 @@ input:focus {
     background: var(--clr-acc);
     outline: none;
 }
+
 .user-object {
     text-align: center;
     display: inline-grid;
@@ -76,6 +99,7 @@ input:focus {
 .empty {
     height: var(--max-height);
 }
+
 i.fas.fa-user:hover {
     cursor: pointer;
     color: #6798ff;
@@ -92,18 +116,16 @@ i.fas.fa-paw:hover {
     cursor: pointer;
     color: #fdcd77;
 }
+
 .samples {
     display: none;
-}
-.new-entities {
-    padding: var(--height) 0px;
-    height: calc(var(--max-height) - var(--height) * 2);
 }
 
 /* Generations */
 .generation {
     display: block;
 }
+
 .parent {
     display: inline-block;
     text-align: center;
@@ -137,7 +159,7 @@ i.fas.fa-paw:hover {
 .bottom-to-right div:hover {
     border-top: 5px solid #6798ff;
     border-left: 5px solid #6798ff;
-} 
+}
 
 .bottom-to-left {
     margin: 0 50% 0 0;
