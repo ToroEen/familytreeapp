@@ -175,3 +175,8 @@ i.fas.fa-paw:hover {
     border-top: 5px solid #6798ff;
     border-right: 5px solid #6798ff;
 }
+
+.left-to-right {
+    border-top: 5px solid #28293d;
+    transition: 0.2s all linear;
+}

@@ -1,5 +1,5 @@
 // ↑
-function bottomToTop(obj) {
+function bottomToTop(obj, extra_piece) {
     let element = obj.children[0].children[1];
     
     element.innerHTML = '<div></div>'
@@ -16,10 +16,22 @@ function bottomToTop(obj) {
     if (element.classList.contains("bottom-to-right")) {
         element.classList.remove("bottom-to-right")
     }
+
+    if (extra_piece) {
+        element = obj.children[0].children[0]
+
+        element.innerHTML = '<div></div>'
+        element.classList.add("left-to-right")
+
+        element = obj.children[0].children[2]
+
+        element.innerHTML = '<div></div>'
+        element.classList.add("left-to-right")
+    }
 }
 
 // ↱
-function bottomToRight(obj) {
+function bottomToRight(obj, first_obj) {
     let element = obj.children[0].children[1];
     
     element.innerHTML = '<div></div>'
@@ -32,10 +44,22 @@ function bottomToRight(obj) {
     if (element.classList.contains("bottom-to-left")) {
         element.classList.remove("bottom-to-left")
     }
+
+    element = obj.children[0].children[2]
+
+    element.innerHTML = '<div></div>'
+    element.classList.add("left-to-right")
+
+    if (first_obj) {
+        element = obj.children[0].children[0]
+
+        element.innerHTML = '<div></div>'
+        element.classList.add("left-to-right") 
+    }
 }
 
 // ↰
-function bottomToLeft(obj) {
+function bottomToLeft(obj, last_child) {
     let element = obj.children[0].children[1];
     
     element.innerHTML = '<div></div>'
@@ -47,6 +71,18 @@ function bottomToLeft(obj) {
 
     if (element.classList.contains("bottom-to-right")) {
         element.classList.remove("bottom-to-right")
+    }
+
+    element = obj.children[0].children[0]
+
+    element.innerHTML = '<div></div>'
+    element.classList.add("left-to-right")
+
+    if (!last_child) {
+        element = obj.children[0].children[2]
+
+        element.innerHTML = '<div></div>'
+        element.classList.add("left-to-right")
     }
 }
 
@@ -64,11 +100,24 @@ function arrangeChildren(children) {
         child = document.getElementById(children[i])
 
         if (i < half) {
-            bottomToRight(child)
+            if (i > 0) {
+                bottomToRight(child, true)
+            } else {
+                bottomToRight(child, false)
+            }
         } else if (i === half && odd) {
-            bottomToTop(child)
+            if (children.length > 2) {
+                bottomToTop(child, true)
+            } else {
+                bottomToTop(child, false)
+            }
+            
         } else {
-            bottomToLeft(child)
+            if (i + 1 === children.length) {
+                bottomToLeft(child, true)
+            } else {
+                bottomToLeft(child, false)
+            }
         }
     }
 }
